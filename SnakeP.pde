@@ -13,7 +13,7 @@ int [] dirY = {-1,1,0,0};//movimiento en y
 float R0a=50,R0b=550,R1=550,C0a=50,C0b=550,C1=550;
 
 //Datos del score
-int score=0, total_apple=0,crono=60,life=3;
+int score=0, total_apple=0,crono=0,life=3;
 
 boolean go, gameOver=false,timer=false;
 int dir, w=25,h=25, max_size = 500,time = 0, v=20;
@@ -46,8 +46,8 @@ void draw(){
     textSize(25);
     fill(255);
     text("Score: " + score, 10, 10, width - 20, 50);
-    text("Manzanas: "+ total_apple, 120,10,width-20,50);
-    text("Vidas Perdidas: "+life,260,10,width-20, 50);
+    text("Manzanas: "+ total_apple, 150,10,width-20,50);
+    text("Vidas: "+life,330,10,width-20, 50);
     text("Tiempo: "+crono, 460,10, width -20, 50);
     world();
     snake();
@@ -130,7 +130,7 @@ void GameOver(){
     op = ' ';
     score=0;
     total_apple=0;
-    crono=60;
+    crono=0;
     timer=false;
     life = 3;
   }
@@ -220,10 +220,9 @@ void world(){
 void timer(){
   if(timer==true){
     if(frameCount % 10 == 0){
-      crono--;//restar tiempo al cronometro
+      crono++;//agregar tiempo al cronometro
     }
   } 
-  if(crono == 0){gameOver=true;life-=1;}//Tiempo agotado
 }
 
 void restart(){
@@ -242,6 +241,5 @@ void restart(){
   go=false;
   op = ' ';
   timer=false;
-  //Reiniciar el temporizador si llego al 0
-  if(crono == 0){crono=60;}
+  crono=0;
 }
