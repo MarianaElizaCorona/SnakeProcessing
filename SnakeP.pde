@@ -13,7 +13,8 @@ int [] dirY = {-1,1,0,0};//movimiento en y
 float R0a=50,R0b=550,R1=550,C0a=50,C0b=550,C1=550;
 
 //Datos del score
-int score=0, total_apple=0,crono=0,life=3;
+int score=0, total_apple=0,crono=0,life=3,best_score=total_apple*5;
+;
 
 boolean go, gameOver=false,timer=false;
 int dir, w=25,h=25, max_size = 500,time = 0, v=20;
@@ -105,14 +106,17 @@ void death(){
    if(gameOver==true){life-=1;}
 }
 void GameOver(){
+  //Mejor puntuacion
+  best_score = best_score > score ? best_score : score;
   background(0);
   fill(16, 191, 2); 
-  textSize(80); 
+   textSize(80); 
   textAlign(CENTER); 
-  text("\nGAME OVER", width/2, height/5);
-  textSize(15);
+  text("\nGAME OVER", width/2, height/9);
+  textSize(30);
   textAlign(CENTER);
-  text("\n\n\n\nPUNTUACION: "+score + "\nMANZANAS COMIDAS: "+ total_apple,width/2, height/3);
+  text("\n\n\n\nPUNTUACION: "+score + "\nMANZANAS COMIDAS: "+ total_apple +
+  "\nMEJOR PUNTUACION: "+ best_score, width/2, height/5);
   textSize(20);
   text("\n\n\n\n\n\nPRESIONA  [ENTER]  PARA CONTINUAR...",width/2, height/2);
   if (keyCode == ENTER) { 
