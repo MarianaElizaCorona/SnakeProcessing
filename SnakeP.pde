@@ -56,7 +56,6 @@ void draw(){
     eat();
     death();
     timer();
-    addBody();
   }
 }
 void snake(){
@@ -204,21 +203,6 @@ void keyPressed(){
         
       }
     }
-  }
-}
-
-void addBody(){
-  int i=1;
-  if(i <= max_size && go==true){
-    if(time == 50){//pasados 5 seg (10*5)
-      
-        pX.add(pX.get(pX.size()-1));
-        pY.add(pY.get(pY.size()-1));
-      
-      time = 0; //resetaer la variable de tiempo
-      i*=10;//aumentar el verificador para el tamaño
-    }
-    time ++;//ir aumentando la variable de tiempo
   }
 }
 
